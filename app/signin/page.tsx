@@ -1,3 +1,4 @@
+// import { Link } from "expo-router";
 import React from "react";
 import {
   View,
@@ -76,6 +77,7 @@ export default function IndexPage() {
             Create an account
           </Text>
         </Text>
+
       </View>
     </View>
   );
@@ -150,7 +152,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     paddingHorizontal: 10,
     fontSize: 16,
-    marginLeft:-20,
+    marginLeft: -20,
     backgroundColor: "#f9f9f9",
   },
   signInButton: {
@@ -177,22 +179,22 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   inputContainer: {
-    flexDirection: 'row',
-    gap:12,
-    alignItems: 'center',
-    width: '110%',
+    flexDirection: "row",
+    gap: 12,
+    alignItems: "center",
+    width: "110%",
     height: 50,
     borderWidth: 1,
-    borderColor: '#d3d3d3',
+    borderColor: "#d3d3d3",
     borderRadius: 25,
     paddingHorizontal: 10,
     marginBottom: 15,
-    backgroundColor: '#f9f9f9',
+    backgroundColor: "#f9f9f9",
   },
   inputIcon: {
     width: 20,
     height: 20,
     marginRight: 10,
-    tintColor: '#a9a9a9', // Change color of the icon if needed
-  },  
+    tintColor: "#a9a9a9", // Change color of the icon if needed
+  },
 });
