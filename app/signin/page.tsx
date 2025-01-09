@@ -1,3 +1,4 @@
+import { Link } from "expo-router";
 import React from "react";
 import {
   View,
@@ -62,9 +63,11 @@ export default function IndexPage() {
         </View>
 
         {/* Sign In Button */}
-        <TouchableOpacity style={styles.signInButton}>
+        <Link href="/tabs/page" style={styles.signInButton}>
+        <TouchableOpacity >
           <Text style={styles.signInButtonText}>Sign In</Text>
         </TouchableOpacity>
+        </Link>
 
         {/* Create Account Link */}
         <Text style={styles.createAccountText}>
@@ -165,6 +168,7 @@ const styles = StyleSheet.create({
   signInButtonText: {
     color: "#ffffff",
     fontSize: 16,
+    textAlign:"center",
     fontWeight: "bold",
   },
   createAccountText: {
