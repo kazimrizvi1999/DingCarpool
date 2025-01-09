@@ -33,7 +33,7 @@ export default function IndexPage() {
 
       {/* Sign In Section */}
       <View style={styles.signInContainer}>
-        <Text style={styles.signInTitle}>Sign In</Text>
+        <Text style={styles.signInTitle}>Register</Text>
 
         {/* Email Input */}
         <View style={styles.inputContainer}>
@@ -43,7 +43,7 @@ export default function IndexPage() {
           />
           <TextInput
             style={styles.input}
-            placeholder="Email"
+            placeholder="kevin_ding@pepperdine.edu"
             placeholderTextColor="#a9a9a9"
           />
         </View>
@@ -62,19 +62,36 @@ export default function IndexPage() {
           />
         </View>
 
+        {/* Confirm Password Input */}
+        <View style={styles.inputContainer}>
+          <Image
+            source={require("../../assets/images/lock.png")}
+            style={styles.inputIcon}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Confirm Password"
+            placeholderTextColor="#a9a9a9"
+            secureTextEntry
+          />
+        </View>
+        <Text>
+        <Text style={styles.createAccountText}>I accept the</Text>
+        <Text style={styles.boldText}>Terms and Conditions</Text>
+        </Text>
         {/* Sign In Button */}
         <TouchableOpacity style={styles.signInButton}>
-          <Text style={styles.signInButtonText}>Sign In</Text>
+          <Text style={styles.signInButtonText}>Register</Text>
         </TouchableOpacity>
 
         {/* Create Account Link */}
         <Text style={styles.createAccountText}>
-          Don't have an account?{" "}
+          Already have an account?{" "}
           <Text
             style={styles.createAccountLink}
-            onPress={() => alert("Create Account")}
+            onPress={() => alert("Sign in...")}
           >
-            Create an account
+            Sign in
           </Text>
         </Text>
       </View>
@@ -137,6 +154,7 @@ const styles = StyleSheet.create({
     padding: 20,
     alignItems: "center",
     marginTop: 10,
+    textAlign:'left',
   },
   signInTitle: {
     fontSize: 20,
@@ -196,4 +214,8 @@ const styles = StyleSheet.create({
     marginRight: 10,
     tintColor: '#a9a9a9', // Change color of the icon if needed
   },  
+  boldText:{
+    fontWeight: 'bold',
+    textDecorationLine: "underline",
+  }
 });
