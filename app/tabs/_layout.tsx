@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/Feather';
 import PostScreen from './posts';
 import HomePage from './page';
 import SettingsScreen from './Settings';
@@ -17,11 +17,11 @@ export default function TabLayout() {
           let iconName;
 
           if (route.name === 'Home') {
-            iconName = focused ? 'home' : 'home-outline';
+            iconName = focused ? 'home' : 'home';
           } else if (route.name === 'My Posts') {
-            iconName = focused ? 'document' : 'document-outline';
+            iconName = focused ? 'message-square' : 'message-square';
           } else if (route.name === 'Settings') {
-            iconName = focused ? 'settings' : 'settings-outline';
+            iconName = focused ? 'settings' : 'settings';
           }
 
           return (
