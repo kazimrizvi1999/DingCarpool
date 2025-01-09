@@ -30,7 +30,6 @@ export default function IndexPage() {
       {/* Title and Tagline */}
       <Text style={styles.title}>DING</Text>
       <Text style={styles.tagline}>CARPOOL WITH EASE SAVE TIME SAVE MONEY</Text>
-
       {/* Sign In Section */}
       <View style={styles.signInContainer}>
         <Text style={styles.signInTitle}>Sign In</Text>

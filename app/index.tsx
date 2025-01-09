@@ -26,7 +26,7 @@ export default function IndexPage() {
         </TouchableOpacity>
         <Text style={styles.orText}>or</Text>
         <TouchableOpacity style={styles.button}>
-          <Link href="/sigin" style={styles.buttonText}>
+          <Link href="/signin/page" style={styles.buttonText}>
           Login
           </Link>
         </TouchableOpacity>
