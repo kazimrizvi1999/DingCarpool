@@ -1,29 +1,59 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, TextInput } from 'react-native';
 
-const carpoolers = [
-  { id: '1', name: 'Eva P.', details: 'Pepperdine > LAX, Flight #SW3997, 9:00 AM' },
-  { id: '2', name: 'Paige C.', details: 'Pepperdine > SNA, Flight #UA2863, 5:00 AM' },
-  { id: '3', name: 'Leon M.', details: 'Pepperdine > LAX, Flight #SW1898, 6:00 PM' },
-];
-
-export default function HomeScreen() {
+export default function IndexPage() {
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>My Reservations</Text>
-      <FlatList
-        data={carpoolers}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <View style={styles.card}>
-            <Text style={styles.cardTitle}>{item.name}</Text>
-            <Text style={styles.cardDetails}>{item.details}</Text>
-          </View>
-        )}
-      />
-      <TouchableOpacity style={styles.addButton} onPress={() => alert('Open Sidebar')}>
-        <Text style={styles.addButtonText}>+</Text>
+      {/* Question Icon */}
+      <TouchableOpacity style={styles.questionIcon} onPress={() => alert('Help')}>
+        <Text style={styles.questionText}>?</Text>
       </TouchableOpacity>
+
+      {/* Logo */}
+      <View style={styles.logoContainer}>
+        <Image source={require('../../assets/images/logo.png')} style={styles.logo} />
+      </View>
+
+      {/* Title and Tagline */}
+      <Text style={styles.title}>DING</Text>
+      <Text style={styles.tagline}>CARPOOL WITH EASE   SAVE TIME   SAVE MONEY</Text>
+
+      {/* Sign In Section */}
+      <View style={styles.signInContainer}>
+        <Text style={styles.signInTitle}>Sign In</Text>
+
+        {/* Email Input */}
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            placeholder="Email"
+            placeholderTextColor="#a9a9a9"
+          />
+        </View>
+
+        {/* Password Input */}
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            placeholder="Password"
+            placeholderTextColor="#a9a9a9"
+            secureTextEntry
+          />
+        </View>
+
+        {/* Sign In Button */}
+        <TouchableOpacity style={styles.signInButton}>
+          <Text style={styles.signInButtonText}>Sign In</Text>
+        </TouchableOpacity>
+
+        {/* Create Account Link */}
+        <Text style={styles.createAccountText}>
+          Don't have an account?{' '}
+          <Text style={styles.createAccountLink} onPress={() => alert('Create Account')}>
+            Create an account
+          </Text>
+        </Text>
+      </View>
     </View>
   );
 }
@@ -31,52 +61,97 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff', // White background
+    backgroundColor: '#294167', // Deep blue background
+    alignItems: 'center',
+    justifyContent: 'center',
     padding: 20,
   },
-  heading: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    color: '#333333',
-    textAlign: 'center', // Center the heading
-  },
-  card: {
-    backgroundColor: '#f9f9f9', // Light card background
-    padding: 15,
+  questionIcon: {
+    position: 'absolute',
+    top: 20,
+    left: 20,
+    backgroundColor: 'transparent',
     borderWidth: 1,
-    borderColor: '#dddddd',
-    borderRadius: 8,
-    marginBottom: 15,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-  },
-  cardTitle: {
-    fontSize: 16,
-    fontWeight: '600',
-    marginBottom: 5,
-    color: '#333333',
-  },
-  cardDetails: {
-    fontSize: 14,
-    color: '#555555',
-  },
-  addButton: {
-    right:-100,
-    backgroundColor: '#007AFF',
-    height: 50,
-    width: 50,
-    borderRadius: 25,
+    borderColor: '#ffffff',
+    borderRadius: 15,
+    width: 30,
+    height: 30,
     justifyContent: 'center',
     alignItems: 'center',
-    alignSelf: 'center',
-    marginTop: 20,
   },
-  addButtonText: {
+  questionText: {
     color: '#ffffff',
-    fontSize: 24,
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  logoContainer: {
+    marginBottom: 20,
+  },
+  logo: {
+    width: 80,
+    height: 80,
+    resizeMode: 'contain', // Ensures the image scales properly
+  },
+  title: {
+    fontSize: 40,
+    color: '#b0c4de',
+    fontWeight: 'bold',
+    marginVertical: 10,
+  },
+  tagline: {
+    color: '#d3d3d3',
+    fontSize: 14,
+    textAlign: 'center',
+    marginBottom: 30,
+  },
+  signInContainer: {
+    backgroundColor: '#ffffff',
+    width: '100%',
+    borderRadius: 20,
+    padding: 20,
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  signInTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  inputContainer: {
+    width: '100%',
+    marginBottom: 15,
+  },
+  input: {
+    width: '100%',
+    height: 40,
+    borderWidth: 1,
+    borderColor: '#d3d3d3',
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    fontSize: 16,
+    backgroundColor: '#f9f9f9',
+  },
+  signInButton: {
+    backgroundColor: '#39547f',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 25,
+    width: '100%',
+    alignItems: 'center',
+    marginVertical: 10,
+  },
+  signInButtonText: {
+    color: '#ffffff',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  createAccountText: {
+    color: '#000000',
+    fontSize: 14,
+    marginTop: 10,
+  },
+  createAccountLink: {
+    color: '#39547f',
     fontWeight: 'bold',
   },
 });
