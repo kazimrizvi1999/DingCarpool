@@ -22,7 +22,7 @@ export default function IndexPage() {
       {/* Buttons */}
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Create an account</Text>
+          <Link href="/register/page" style={styles.buttonText}>Create an account</Link>
         </TouchableOpacity>
         <Text style={styles.orText}>or</Text>
         <TouchableOpacity style={styles.button}>
