@@ -1,3 +1,4 @@
+import { Link } from 'expo-router';
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
@@ -11,7 +12,7 @@ export default function IndexPage() {
 
       {/* Logo */}
       <View style={styles.logoContainer}>
-        <Image source={require('../../assets/images/logo.png')} style={styles.logo} />
+        <Image source={require('../assets/images/logo.png')} style={styles.logo} />
       </View>
 
       {/* Title and Tagline */}
@@ -25,7 +26,9 @@ export default function IndexPage() {
         </TouchableOpacity>
         <Text style={styles.orText}>or</Text>
         <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Login</Text>
+          <Link href="/sigin" style={styles.buttonText}>
+          Login
+          </Link>
         </TouchableOpacity>
       </View>
     </View>
