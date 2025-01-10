@@ -99,12 +99,13 @@ function PostScreen() {
               secureTextEntry
             />
           </View>
-          <TouchableOpacity
+          
+          <Link
+          href={"/tabs/posts"}
             style={styles.continueButton}
-            onPress={() => alert("Photo Uploaded!")}
           >
             <Text style={styles.continueButtonText}>Create Post</Text>
-          </TouchableOpacity>
+          </Link>
         </View>
       </ScrollView>
   );

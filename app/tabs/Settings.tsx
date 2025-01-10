@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, ImageBackground } from 'react-native';
+import { View,ScrollView, Text, StyleSheet, Image, TouchableOpacity, ImageBackground } from 'react-native';
 
 export default function SettingsScreen() {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.header}>
         <ImageBackground
           source={require("../../assets/images/bg.jpeg")}
@@ -33,7 +33,7 @@ export default function SettingsScreen() {
           <Text style={styles.logoutText}>Logout</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
