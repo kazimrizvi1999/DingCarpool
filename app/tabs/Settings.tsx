@@ -15,13 +15,15 @@ export default function SettingsScreen() {
           <Text style={styles.userId}>User ID: 1 938 234 8345</Text>
           <Image
             style={styles.avatar}
-            source={{
-              uri: 'https://i.pravatar.cc/150?img=3', 
-            }}
+            source={
+              require("../../assets/images/john.png")
+            }
           />
           <Text style={styles.name}>Kevin Ding</Text>
           <Text style={styles.email}>kevin_ding@pepperdine.edu</Text>
         </ImageBackground>
+        {/* Overlay for blue shade */}
+                      <View style={styles.overlay}></View>
       </View>
 
       <View style={styles.settings}>
@@ -44,6 +46,10 @@ export default function SettingsScreen() {
 }
 
 const styles = StyleSheet.create({
+  overlay: {
+    ...StyleSheet.absoluteFillObject, // Covers the entire ImageBackground
+    backgroundColor: 'rgba(41, 65, 103, 0.7)', // Blue shade with 50% opacity
+  },
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
@@ -58,18 +64,20 @@ const styles = StyleSheet.create({
   },
   
   header: {
-    flex: 0.80,
+    height:240,
     backgroundColor: '#2f3640',
     alignItems: 'center',
   },
   
   userId: {
+    zIndex:50,
     color: '#fff',
     fontSize: 14,
     marginBottom: 10,
   },
   
   avatar: {
+    zIndex:50,
     width: 80,
     height: 80,
     borderRadius: 40,
@@ -79,19 +87,21 @@ const styles = StyleSheet.create({
   },
   
   name: {
+    zIndex:50,
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
   },
   
   email: {
+    zIndex:50,
     color: '#dcdde1',
     fontSize: 14,
   },
   
   settings: {
     backgroundColor: '#fff',
-    marginTop: -20,
+    marginTop: -10,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     paddingHorizontal: 20,

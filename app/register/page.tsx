@@ -35,7 +35,7 @@ export default function IndexPage() {
       {/* Title and Tagline */}
       <Text style={styles.title}>DING</Text>
       <Text style={styles.tagline}>CARPOOL WITH EASE SAVE TIME SAVE MONEY</Text>
-      
+
       {showUploadPhoto ? (
         <View style={styles.genderSelectionContainer}>
           <Text style={styles.genderTitle}>Choose Your Photo</Text>
@@ -72,7 +72,6 @@ export default function IndexPage() {
               Sign in
             </Link>
           </Text>
-
         </View>
       ) : showGenderSelection ? (
         <View style={styles.genderSelectionContainer}>
@@ -378,17 +377,17 @@ const styles = StyleSheet.create({
   roundedPerson: {
     width: 100,
     height: 100,
-    alignItems:"center",
+    alignItems: "center",
     borderRadius: 100 / 2,
     overflow: "hidden",
     borderWidth: 5,
     borderColor: "#DAD8C9",
-    backgroundColor: "#DAD8C9"
+    backgroundColor: "#DAD8C9",
   },
-  personLogo:{
-    bottom:10,
+  personLogo: {
+    bottom: 10,
     width: 130,
     height: 130,
     resizeMode: "contain",
-  }
+  },
 });

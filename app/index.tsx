@@ -27,17 +27,21 @@ export default function IndexPage() {
 
       {/* Buttons */}
       <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button}>
-        <Link href="/register/page" style={styles.buttonText}>
-            Create an account
-        </Link>
-          </TouchableOpacity>
+        {/* Button for Create an account */}
+        {/* <Link href="/register/page"> */}
+          <Link href="/register/page" style={styles.button}>
+            <Text style={styles.buttonText}>Create an account</Text>
+          </Link>
+        {/* </Link> */}
+
         <Text style={styles.orText}>or</Text>
-          <TouchableOpacity style={styles.button}>
-        <Link href="/signin/page" style={styles.buttonText}>
-            Login
-        </Link>
-            </TouchableOpacity>
+
+        {/* Button for Login */}
+        {/* <Link href="/signin/page"> */}
+          <Link href="/signin/page" style={styles.button}>
+            <Text style={styles.buttonText}>Login</Text>
+          </Link>
+        {/* </Link> */}
       </View>
     </View>
   );
@@ -109,9 +113,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
     borderRadius: 25,
     marginBottom: 10,
-    width: "100%",
+    width: "99%",
     maxWidth: 300,
+    height:50,
     alignItems: "center",
+    textAlign:"center",
   },
   buttonText: {
     color: "#ffffff",
