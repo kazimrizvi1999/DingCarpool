@@ -27,26 +27,29 @@ const carpoolers:any = [
     
     carpoolers.push({
         id: Date.now() + Math.floor(Math.random() * 1000).toString(),
-        name: "John D.",
+        name: "Kevin D.",
         gender: "Male",
         time: "Leave at 10:00AM",
-        date: "1/17",
+        date: "1/16",
         route: "Pepperdine > BUR",
         flight: "DL4821",
-        image: "https://via.placeholder.com/100x100.png",
+        image: require('../../assets/images/john.png'),
+        backgroundColor:"#888888",
       });
   };
   const CarpoolCard = ({ item }:any) => (
     <View style={styles.card}>
-      <Image source={{ uri: item.image }} style={styles.image} />
-      <View style={styles.details}>
-        <Text style={styles.name}>{item.name}</Text>
-        <Text style={styles.gender}>{item.gender}</Text>
-        <Text style={styles.time}>{item.time}</Text>
-        <Text style={styles.date}>{item.date}</Text>
-        <Text style={styles.route}>{item.route}</Text>
-        <Text style={styles.flight}>Flight # {item.flight}</Text>
-      </View>
+           <Image source={item.image} style={[styles.avatar,{backgroundColor:item.backgroundColor}]} />
+           <View style={styles.info}>
+             <Text style={styles.name}>{item.name}</Text>
+             <Text style={styles.gender}>{item.gender}</Text>
+             <Text style={styles.route}>{item.route}</Text>
+           </View>
+           <View style={styles.details}>
+             <Text style={styles.departure}>{item.time}</Text>
+             <Text style={styles.date}>{item.date}</Text>
+             <Text style={styles.flight}>Flight #{item.flight}</Text>
+           </View>
     </View>
   );
 
@@ -59,6 +62,8 @@ const carpoolers:any = [
             source={require("../../assets/images/bg.jpeg")}
             style={styles.backgroundImage}
           ></ImageBackground>
+          {/* Overlay for blue shade */}
+              <View style={styles.overlay}></View>
         </View>
   
         {/* List Section */}
@@ -105,6 +110,23 @@ const carpoolers:any = [
   
 
 const styles = StyleSheet.create({
+  overlay: {
+    ...StyleSheet.absoluteFillObject, // Covers the entire ImageBackground
+    backgroundColor: 'rgba(41, 65, 103, 0.7)', // Blue shade with 50% opacity
+  },
+  avatar: {
+    width: 80,
+    height: 90,
+    borderRadius: 10,
+    marginRight: 15,
+  },
+  info: {
+    flex: 1,
+  },
+  departure: {
+    fontSize: 12,
+    color: '#888888',
+  },
     noDataContainer: {
         flex: 1,
         justifyContent: "flex-start",
@@ -161,9 +183,9 @@ const styles = StyleSheet.create({
   },
   card: {
     flexDirection: 'row',
-    backgroundColor: '#fff',
+    backgroundColor: '#ffffff',
     borderRadius: 8,
-    padding: 16,
+    padding: 2,
     marginBottom: 16,
     elevation: 3, // For shadow on Android
     shadowColor: '#000',
@@ -179,6 +201,7 @@ const styles = StyleSheet.create({
   },
   details: {
     flex: 1,
+    marginLeft:5,
   },
   name: {
     fontSize: 16,
