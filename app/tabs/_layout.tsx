@@ -40,7 +40,7 @@ export default function TabLayout() {
         headerShown: false, // Hide header
         tabBarActiveTintColor: 'white',
         tabBarInactiveTintColor: '#FAF9F6',
-        tabBarStyle: { backgroundColor: '#294167', borderTopWidth: 0,borderRadius:40,marginBottom:10,display:"flex",height:40,justifyContent:"center",alignItems:"center",verticalAlign:"middle", },
+        tabBarStyle: { backgroundColor: '#294167', borderTopWidth: 0,borderRadius:40,marginBottom:10,display:"flex",height:60,justifyContent:"center",alignItems:"center",verticalAlign:"center",paddingVertical:2 },
         tabBarLabel: () => null, // Disable the default label rendering
       })}
     >

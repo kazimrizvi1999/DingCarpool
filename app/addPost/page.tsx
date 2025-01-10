@@ -110,13 +110,8 @@ function PostScreen() {
           <TouchableOpacity
             style={styles.continueButton}
             onPress={() => {addCarpooler();
-        Dialog.show({
-          type: ALERT_TYPE.SUCCESS,
-          title: 'Success',
-          textBody: 'Congrats! this is dialog box success',
-          button: 'close',
-        })
-              }}
+      
+              navigation.goBack();}}
           >
             <Text style={styles.continueButtonText}>Create Post</Text>
           </TouchableOpacity>
