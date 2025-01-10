@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { Link } from "expo-router";
 import React from "react";
 import {
@@ -9,8 +10,10 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
+import { addCarpooler } from "../tabs/posts";
 
 function PostScreen() {
+  const navigation = useNavigation();
   return (
       <ScrollView
         style={{ flex: 1, }}
@@ -100,12 +103,12 @@ function PostScreen() {
             />
           </View>
           
-          <Link
-          href={"/tabs/posts"}
+          <TouchableOpacity
             style={styles.continueButton}
+            onPress={() => {addCarpooler();navigation.goBack();}}
           >
             <Text style={styles.continueButtonText}>Create Post</Text>
-          </Link>
+          </TouchableOpacity>
         </View>
       </ScrollView>
   );

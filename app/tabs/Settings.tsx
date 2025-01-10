@@ -3,7 +3,9 @@ import { View,ScrollView, Text, StyleSheet, Image, TouchableOpacity, ImageBackgr
 
 export default function SettingsScreen() {
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
+
+    <ScrollView >
       <View style={styles.header}>
         <ImageBackground
           source={require("../../assets/images/bg.jpeg")}
@@ -34,6 +36,8 @@ export default function SettingsScreen() {
         </TouchableOpacity>
       </View>
     </ScrollView>
+    </View>
+
   );
 }
 
@@ -52,7 +56,7 @@ const styles = StyleSheet.create({
   },
   
   header: {
-    flex: 0.60,
+    flex: 0.80,
     backgroundColor: '#2f3640',
     alignItems: 'center',
   },
