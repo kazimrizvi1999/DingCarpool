@@ -1,3 +1,4 @@
+import { Link } from 'expo-router';
 import React from 'react';
 import { View,ScrollView, Text, StyleSheet, Image, TouchableOpacity, ImageBackground } from 'react-native';
 
@@ -30,10 +31,11 @@ export default function SettingsScreen() {
             <Text style={styles.optionText}>{item}</Text>
           </TouchableOpacity>
         ))}
-
-        <TouchableOpacity style={styles.logoutButton}>
+        <Link href="/" style={styles.logoutButton}>
+        <TouchableOpacity  >
           <Text style={styles.logoutText}>Logout</Text>
         </TouchableOpacity>
+        </Link>
       </View>
     </ScrollView>
     </View>
@@ -123,9 +125,10 @@ const styles = StyleSheet.create({
   },
   
   logoutButton: {
-    backgroundColor: '#40739e',
+    backgroundColor: '#294167',
     borderRadius: 20,
     paddingVertical: 15,
+    textAlign:"center",
     alignItems: 'center',
     marginTop: 20,
   },

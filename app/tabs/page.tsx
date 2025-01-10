@@ -1,47 +1,72 @@
-import { Link } from 'expo-router';
-import React from 'react';
+import { Link, router, useNavigation } from 'expo-router';
+import React, { useState } from 'react';
 import Icon from "react-native-vector-icons/Ionicons";
-import { View, Text,ScrollView, FlatList, Image, StyleSheet, ImageBackground } from 'react-native';
-
+import { View, Text,ScrollView, FlatList, Image, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
+let carpoolers=[
+  {
+    id: '1',
+    name: 'Eva P.',
+    gender: 'Male',
+    route: 'Pepperdine > LAX',
+    departureDate: '1/12',
+    flight: 'SW3997',
+    image: require('../../assets/images/paige.png'), // Replace with actual image URL
+    backgroundColor:"#8AB4F8",
+    leavesAt:"9:00AM",
+  },
+  {
+    id: '2',
+    name: 'Paige C.',
+    gender: 'Female',
+    route: 'Pepperdine > SNA',
+    departureDate: '1/13',
+    flight: 'UA2863',
+    image:require('../../assets/images/eva.png'), // Replace with actual image URL
+    backgroundColor:"#C0C0C0",
+    leavesAt:"5:00AM",
+  },
+  {
+    id: '3',
+    name: 'Leon M.',
+    gender: 'Male',
+    route: 'Pepperdine > LAX',
+    departureDate: '1/16',
+    flight: 'SW1898',
+    image: require('../../assets/images/leon.png'), // Replace with actual image URL
+    backgroundColor:"#FFBB09",
+    leavesAt:"5:45AM",
+  },
+]
+let res=[]
+export const moveToReservations = () => {
+  const selectedCarpooler = carpoolers[carpoolers.length-1];
+  carpoolers.pop()
+  res.push(selectedCarpooler)
+  // if (selectedCarpooler) {
+  //   // @ts-ignore
+  //   setRes([...res, selectedCarpooler]);
+  //   setCarpoolers(a);
+  // }
+};
 const App = () => {
-  const carpoolers = [
-    {
-      id: '1',
-      name: 'Eva P.',
-      gender: 'Male',
-      route: 'Pepperdine > LAX',
-      departureDate: '1/12',
-      flight: 'SW3997',
-      image: require('../../assets/images/paige.png'), // Replace with actual image URL
-      backgroundColor:"#8AB4F8",
-      leavesAt:"9:00AM",
-    },
-    {
-      id: '2',
-      name: 'Paige C.',
-      gender: 'Female',
-      route: 'Pepperdine > SNA',
-      departureDate: '1/13',
-      flight: 'UA2863',
-      image:require('../../assets/images/eva.png'), // Replace with actual image URL
-      backgroundColor:"#C0C0C0",
-      leavesAt:"5:00AM",
-    },
-    {
-      id: '3',
-      name: 'Leon M.',
-      gender: 'Male',
-      route: 'Pepperdine > LAX',
-      departureDate: '1/16',
-      flight: 'SW1898',
-      image: require('../../assets/images/leon.png'), // Replace with actual image URL
-      backgroundColor:"#FFBB09",
-      leavesAt:"5:45AM",
-    },
-  ];
 
   const renderCarpooler = ({ item }:any) => (
     <View style={styles.carpoolerCard}>
+      <Image source={item.image} style={[styles.avatar,{backgroundColor:item.backgroundColor}]} />
+      <View style={styles.info}>
+        <Text style={styles.name2}>{item.name}</Text>
+        <Text style={styles.gender2}>{item.gender}</Text>
+        <Text style={styles.route2}>{item.route}</Text>
+      </View>
+      <View style={styles.details}>
+        <Text style={styles.departure}>Leaves at {item.leavesAt}</Text>
+        <Text style={styles.date}>{item.departureDate}</Text>
+        <Text style={styles.flight}>Flight #{item.flight}</Text>
+      </View>
+    </View>
+  );
+  const renderRes = ({ item }:any) => (
+    <View style={styles.resCard}>
       <Image source={item.image} style={[styles.avatar,{backgroundColor:item.backgroundColor}]} />
       <View style={styles.info}>
         <Text style={styles.name}>{item.name}</Text>
@@ -55,7 +80,7 @@ const App = () => {
       </View>
     </View>
   );
-
+ 
   return (
 
     <View style={styles.container}>
@@ -72,7 +97,15 @@ const App = () => {
       
       <View style={styles.nearbySection}>
         <Text style={styles.title}>My Reservations</Text>
+        {res.length>0?<FlatList
+          data={res}
+          renderItem={renderRes}
+          // @ts-ignore
+          keyExtractor={(item) => item.id}
+          showsVerticalScrollIndicator={false}
+        />:
         <Text style={styles.subtitle}>You do not have any reservations</Text>
+        }
         <Text style={styles.sectionTitle}>Nearby Carpoolers</Text>
         <FlatList
           data={carpoolers}
@@ -83,9 +116,10 @@ const App = () => {
       </View>
        <Link
             style={styles.floatingButton}
-            href="/addPost/page">
+            href="/addMatches/page">
             {/* <TouchableOpacity
-            style={styles.floatingButton}
+            // style={styles.floatingButton}
+                  // onPress={() => {moveToReservations();router.push("../addMatches", { relativeToDirectory: true });}}
       
               > */}
               <Icon name="add" size={30} color="#fff" />
@@ -172,6 +206,21 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     marginBottom: 10,
   },
+  resCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#294167',
+    padding: 2,
+    color:"white",
+    paddingRight:10,
+    borderRadius: 10,
+    marginBottom: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
+  },
   carpoolerCard: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -198,6 +247,24 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 16,
     fontWeight: 'bold',
+    color:"white"
+    
+  },
+  name2: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color:"white"
+    
+  },
+  gender2: {
+    fontSize: 12,
+    color:"white"
+
+  },
+  route2: {
+    fontSize: 14,
+    marginTop: 5,
+    color:"white",
   },
   gender: {
     fontSize: 12,

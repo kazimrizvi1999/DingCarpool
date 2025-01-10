@@ -299,6 +299,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 25,
+    textAlign:"center",
     width: "100%",
     alignItems: "center",
     marginVertical: 10,
