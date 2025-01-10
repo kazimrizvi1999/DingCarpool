@@ -71,6 +71,21 @@ export const moveTofinRes = () => {
   }
   
 };
+export const onCancel = () => {
+  if(finRes.length!=0){
+    const seleres = finRes[finRes.length-1];
+    finRes.pop()
+    carpoolers.push(seleres)
+    setTimeout(()=>{
+      Toast.show({
+        type: ALERT_TYPE.SUCCESS,
+        title: 'New Rservation!',
+        textBody: 'Check your home page for compatible riders for your upcoming trips',
+      })
+    },800)
+  }
+  
+};
 const App = () => {
 const params=useSearchParams()
 const toastMessage = params.get('a');

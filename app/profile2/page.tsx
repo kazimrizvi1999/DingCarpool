@@ -1,5 +1,7 @@
+import { useNavigation } from "expo-router";
 import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { onCancel } from "../tabs/page";
 
 const carpooler = {
   id: "3",
@@ -13,7 +15,10 @@ const carpooler = {
   phoneNumber: "(702) 666-3113",
 };
 
-const App = () => (
+const App = () => {
+
+  const navigation = useNavigation();
+  return(
   <View style={styles.container}>
     <Text style={styles.title}>Reservation</Text>
     <View style={styles.card}>
@@ -32,11 +37,16 @@ const App = () => (
     <TouchableOpacity style={styles.textButton}>
       <Text style={styles.textButtonLabel}>Text {carpooler.phoneNumber}</Text>
     </TouchableOpacity>
-    <TouchableOpacity style={[styles.textButton,{backgroundColor:"red",marginTop:22,width:"80%"}]}>
+    <TouchableOpacity  
+    onPress={()=>{
+      onCancel();navigation.goBack();
+    }}
+    
+    style={[styles.textButton,{backgroundColor:"red",marginTop:22,width:"80%"}]}>
       <Text style={styles.textButtonLabel}>Cancel Reservation</Text>
     </TouchableOpacity>
-  </View>
-);
+  </View>)
+};
 
 const styles = StyleSheet.create({
   container: {

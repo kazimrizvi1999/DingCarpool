@@ -1,7 +1,7 @@
 import { Link, useNavigation } from "expo-router";
 import React from "react";
 import Icon from "react-native-vector-icons/Ionicons";
-import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import { moveTofinRes } from "../tabs/page";
 
 let carpoolers = [
@@ -26,6 +26,8 @@ const App = () => {
 
   return (
     <View style={styles.container}>
+      <ScrollView>
+
       <Text style={styles.title}>You've Found a Match!</Text>
       <View style={styles.card}>
         <Image source={carpooler.image} style={styles.avatar} />
@@ -95,6 +97,8 @@ const App = () => {
         </Text>
       </TouchableOpacity>
     </View>
+    </ScrollView>
+
     </View>
   );
 };
