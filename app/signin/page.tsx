@@ -72,12 +72,12 @@ export default function IndexPage() {
         {/* Create Account Link */}
         <Text style={styles.createAccountText}>
           Don't have an account?{" "}
-          <Text
-            style={styles.createAccountLink}
-            onPress={() => alert("Create Account")}
+           <Link
+           style={styles.createAccountLink}
+                       href="/register/page"
           >
             Create an account
-          </Text>
+          </Link>
         </Text>
 
       </View>

@@ -1,3 +1,4 @@
+import { Link } from "expo-router";
 import React, { useState } from "react";
 import {
   View,
@@ -55,21 +56,21 @@ export default function IndexPage() {
             Don't worry, you'll be able to change this later
           </Text>
 
-          <TouchableOpacity
+          <Link
+          href="/tabs/page"
             style={styles.continueButton}
-            onPress={() => alert("Photo Uploaded!")}
           >
             <Text style={styles.continueButtonText}>Upload</Text>
-          </TouchableOpacity>
+          </Link>
 
           <Text style={styles.createAccountText}>
             Already have an account?{" "}
-            <Text
+            <Link
+            href="/signin/page"
               style={styles.createAccountLink}
-              onPress={() => alert("Sign in...")}
             >
               Sign in
-            </Text>
+            </Link>
           </Text>
 
         </View>
@@ -109,12 +110,12 @@ export default function IndexPage() {
 
           <Text style={styles.createAccountText}>
             Already have an account?{" "}
-            <Text
+            <Link
+            href="/signin/page"
               style={styles.createAccountLink}
-              onPress={() => alert("Sign in...")}
             >
               Sign in
-            </Text>
+            </Link>
           </Text>
         </View>
       ) : (
@@ -176,12 +177,12 @@ export default function IndexPage() {
 
           <Text style={styles.createAccountText}>
             Already have an account?{" "}
-            <Text
+            <Link
+            href="/signin/page"
               style={styles.createAccountLink}
-              onPress={() => alert("Sign in...")}
             >
               Sign in
-            </Text>
+            </Link>
           </Text>
         </View>
       )}
