@@ -11,8 +11,10 @@ const App = () => {
       gender: 'Male',
       route: 'Pepperdine > LAX',
       departureDate: '1/12',
-      flight: 'S*****',
-      image: 'https://via.placeholder.com/100', // Replace with actual image URL
+      flight: 'SW3997',
+      image: require('../../assets/images/paige.png'), // Replace with actual image URL
+      backgroundColor:"#8AB4F8",
+      leavesAt:"9:00AM",
     },
     {
       id: '2',
@@ -20,8 +22,10 @@ const App = () => {
       gender: 'Female',
       route: 'Pepperdine > SNA',
       departureDate: '1/13',
-      flight: 'U*****',
-      image: 'https://via.placeholder.com/100', // Replace with actual image URL
+      flight: 'UA2863',
+      image:require('../../assets/images/eva.png'), // Replace with actual image URL
+      backgroundColor:"#C0C0C0",
+      leavesAt:"5:00AM",
     },
     {
       id: '3',
@@ -29,21 +33,23 @@ const App = () => {
       gender: 'Male',
       route: 'Pepperdine > LAX',
       departureDate: '1/16',
-      flight: 'S*****',
-      image: 'https://via.placeholder.com/100', // Replace with actual image URL
+      flight: 'SW1898',
+      image: require('../../assets/images/leon.png'), // Replace with actual image URL
+      backgroundColor:"#FFBB09",
+      leavesAt:"5:45AM",
     },
   ];
 
   const renderCarpooler = ({ item }:any) => (
     <View style={styles.carpoolerCard}>
-      <Image source={{ uri: item.image }} style={styles.avatar} />
+      <Image source={item.image} style={[styles.avatar,{backgroundColor:item.backgroundColor}]} />
       <View style={styles.info}>
         <Text style={styles.name}>{item.name}</Text>
         <Text style={styles.gender}>{item.gender}</Text>
         <Text style={styles.route}>{item.route}</Text>
       </View>
       <View style={styles.details}>
-        <Text style={styles.departure}>Leaves at</Text>
+        <Text style={styles.departure}>Leaves at {item.leavesAt}</Text>
         <Text style={styles.date}>{item.departureDate}</Text>
         <Text style={styles.flight}>Flight #{item.flight}</Text>
       </View>
@@ -54,12 +60,15 @@ const App = () => {
 
     <View style={styles.container}>
       <View style={styles.header2}>
-              <ImageBackground
-                source={require("../../assets/images/bg.jpeg")}
-                style={styles.backgroundImage}
-              >
-              </ImageBackground>
-            </View>
+  <ImageBackground
+    source={require("../../assets/images/bg.jpeg")}
+    style={styles.backgroundImage}
+  >
+    {/* Overlay for blue shade */}
+    <View style={styles.overlay}></View>
+  </ImageBackground>
+</View>
+
       
       <View style={styles.nearbySection}>
         <Text style={styles.title}>My Reservations</Text>
@@ -87,9 +96,13 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
+  overlay: {
+    ...StyleSheet.absoluteFillObject, // Covers the entire ImageBackground
+    backgroundColor: 'rgba(41, 65, 103, 0.7)', // Blue shade with 50% opacity
+  },
   container: {
     flex: 1,
-    backgroundColor: '#F5F5F5',
+    backgroundColor: '#ffffff',
   },
   backgroundImage: {
     width: '100%', 
@@ -135,29 +148,36 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
+    textAlign:"center",
   },
   subtitle: {
     fontSize: 14,
     color: '#888888',
     marginTop: 5,
+    textAlign:"center",
   },
   nearbySection: {
     flex: 1,
     paddingHorizontal: 20,
-    borderRadius: 20,
+    borderRadius: 25,
+    width: '100%',
+    height:'100%',
+    backgroundColor: '#FFFFFF',
     // borderTopRightRadius: 20,
-    paddingTop: 20,
+    paddingTop: 20, 
+    marginTop: -30, 
   },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: '400',
     marginBottom: 10,
   },
   carpoolerCard: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
-    padding: 15,
+    padding: 2,
+    paddingRight:10,
     borderRadius: 10,
     marginBottom: 10,
     shadowColor: '#000',
@@ -167,9 +187,9 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   avatar: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
+    width: 80,
+    height: 90,
+    borderRadius: 10,
     marginRight: 15,
   },
   info: {
