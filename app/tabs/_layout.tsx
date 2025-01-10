@@ -26,6 +26,7 @@ export default function TabLayout() {
 
           return (
             <View style={focused?styles.ActivetabItem:styles.tabItem}>
+              {/* @ts-ignore */}
               <Icon name={iconName} size={size} color={focused ? 'white' : color} />
               <Text style={[focused && styles.activeTabText,styles.tabText]}>
                 {iconName = focused&&route.name}

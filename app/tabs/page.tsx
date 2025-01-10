@@ -37,7 +37,7 @@ let carpoolers=[
     leavesAt:"5:45AM",
   },
 ]
-let res=[]
+let res:any=[]
 export const moveToReservations = () => {
   if(carpoolers.length!=0){
     const selectedCarpooler = carpoolers[carpoolers.length-1];
