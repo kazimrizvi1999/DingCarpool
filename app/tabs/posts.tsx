@@ -62,6 +62,8 @@ const carpoolers:any = [
             source={require("../../assets/images/bg.jpeg")}
             style={styles.backgroundImage}
           ></ImageBackground>
+          {/* Overlay for blue shade */}
+              <View style={styles.overlay}></View>
         </View>
   
         {/* List Section */}
@@ -108,6 +110,10 @@ const carpoolers:any = [
   
 
 const styles = StyleSheet.create({
+  overlay: {
+    ...StyleSheet.absoluteFillObject, // Covers the entire ImageBackground
+    backgroundColor: 'rgba(41, 65, 103, 0.7)', // Blue shade with 50% opacity
+  },
   avatar: {
     width: 80,
     height: 90,
