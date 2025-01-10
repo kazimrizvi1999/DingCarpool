@@ -36,7 +36,7 @@ export default function TabLayout() {
         headerShown: false, // Hide header
         tabBarActiveTintColor: 'white',
         tabBarInactiveTintColor: '#FAF9F6',
-        tabBarStyle: { backgroundColor: '#294167', borderTopWidth: 0,borderRadius:40,marginBottom:10,display:"flex",height:40,justifyContent:"center",alignItems:"center" },
+        tabBarStyle: { backgroundColor: '#294167', borderTopWidth: 0,borderRadius:40,marginBottom:10,display:"flex",height:40,justifyContent:"center",alignItems:"center",verticalAlign:"middle", },
         tabBarLabel: () => null, // Disable the default label rendering
       })}
     >
@@ -51,21 +51,22 @@ const styles = StyleSheet.create({
   tabItem: {
     display:"flex",
     flexDirection: 'row',
+    paddingHorizontal:8,
     alignItems: 'center',
     justifyContent: 'center',
-    width:60,
-    padding:1
+    width:40,
   },
   ActivetabItem: {
     display:"flex",
     flexDirection: 'row',
+    paddingHorizontal:8,
+    paddingVertical:4,
     alignItems: 'center',
     backgroundColor:"#436fb5",
     justifyContent: 'center',
     width:100,
     borderRadius:20,
-    padding:1, 
-    height:32,
+    height:40,
   },
   tabText: {
     fontSize: 12,

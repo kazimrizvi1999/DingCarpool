@@ -1,5 +1,7 @@
+import { Link } from 'expo-router';
 import React from 'react';
-import { View, Text, FlatList, Image, StyleSheet } from 'react-native';
+import Icon from "react-native-vector-icons/Ionicons";
+import { View, Text,ScrollView, FlatList, Image, StyleSheet, ImageBackground } from 'react-native';
 
 const App = () => {
   const carpoolers = [
@@ -49,12 +51,19 @@ const App = () => {
   );
 
   return (
+
     <View style={styles.container}>
-      <View style={styles.header}>
+      <View style={styles.header2}>
+              <ImageBackground
+                source={require("../../assets/images/bg.jpeg")}
+                style={styles.backgroundImage}
+              >
+              </ImageBackground>
+            </View>
+      
+      <View style={styles.nearbySection}>
         <Text style={styles.title}>My Reservations</Text>
         <Text style={styles.subtitle}>You do not have any reservations</Text>
-      </View>
-      <View style={styles.nearbySection}>
         <Text style={styles.sectionTitle}>Nearby Carpoolers</Text>
         <FlatList
           data={carpoolers}
@@ -63,6 +72,16 @@ const App = () => {
           showsVerticalScrollIndicator={false}
         />
       </View>
+       <Link
+            style={styles.floatingButton}
+            href="/addPost/page">
+            {/* <TouchableOpacity
+            style={styles.floatingButton}
+      
+              > */}
+              <Icon name="add" size={30} color="#fff" />
+            {/* </TouchableOpacity> */}
+                </Link>
     </View>
   );
 };
@@ -72,12 +91,46 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F5F5F5',
   },
+  backgroundImage: {
+    width: '100%', 
+    height: '100%', 
+    justifyContent: 'center',
+    alignItems: 'center',
+    resizeMode: 'cover',
+
+  },header2: {
+    flex: 0.6,
+    backgroundColor: '#2f3640',
+    alignItems: 'center',
+  },
+  floatingButton: {
+    position: "absolute",
+    width: 55,
+    display:"flex", margin:"auto",
+    height: 55,
+    backgroundColor: "#294167",
+    borderRadius: 30,
+    verticalAlign:"middle",
+    paddingHorizontal:10,
+    justifyContent: "center",
+    alignItems: "center",
+    bottom: 10,
+    right: 20,
+    elevation: 5, // For Android shadow
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.5, // For iOS shadow
+  },
   header: {
     alignItems: 'center',
+    borderRadius:30,
     padding: 20,
+    // borderTopLeftRadius: 20,
+    // borderTopRightRadius: 20,
     backgroundColor: '#FFFFFF',
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
+    // borderBottomLeftRadius: 20,
+    // borderBottomRightRadius: 20,
   },
   title: {
     fontSize: 24,
@@ -91,6 +144,8 @@ const styles = StyleSheet.create({
   nearbySection: {
     flex: 1,
     paddingHorizontal: 20,
+    borderRadius: 20,
+    // borderTopRightRadius: 20,
     paddingTop: 20,
   },
   sectionTitle: {
