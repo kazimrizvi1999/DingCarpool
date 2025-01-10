@@ -176,9 +176,9 @@ useEffect(() => {
       </View>
 
       <View style={styles.nearbySection}>
+      <Text style={styles.title}>My Reservations</Text>
         {finRes.length > 0 ? (
           <>
-        <Text style={styles.title}>My Reservations</Text>
           
           <FlatList
             data={finRes}

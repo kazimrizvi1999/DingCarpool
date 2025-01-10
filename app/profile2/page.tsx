@@ -1,7 +1,8 @@
 import { useNavigation } from "expo-router";
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { onCancel } from "../tabs/page";
+import { ALERT_TYPE, Dialog, AlertNotificationRoot, Toast } from 'react-native-alert-notification';
 
 const carpooler = {
   id: "3",
@@ -16,10 +17,18 @@ const carpooler = {
 };
 
 const App = () => {
-
+  useEffect(() => {
+      Dialog.show({
+        type: ALERT_TYPE.SUCCESS,
+        title: 'Welcome To Ding!',
+        textBody: "Create Posts so that you can match with other carpoolers",
+      });
+  }, []);
   const navigation = useNavigation();
   return(
-  <View style={styles.container}>
+    
+    <View style={styles.container}>
+    <AlertNotificationRoot>
     <Text style={styles.title}>Reservation</Text>
     <View style={styles.card}>
       <View style={styles.imageContainer}>
@@ -45,7 +54,10 @@ const App = () => {
     style={[styles.textButton,{backgroundColor:"red",marginTop:22,width:"80%"}]}>
       <Text style={styles.textButtonLabel}>Cancel Reservation</Text>
     </TouchableOpacity>
-  </View>)
+   
+    </AlertNotificationRoot>
+  </View>
+  )
 };
 
 const styles = StyleSheet.create({
