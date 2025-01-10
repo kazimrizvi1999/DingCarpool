@@ -20,8 +20,13 @@ const App = () => {
   useEffect(() => {
       Dialog.show({
         type: ALERT_TYPE.SUCCESS,
-        title: 'Welcome To Ding!',
-        textBody: "Create Posts so that you can match with other carpoolers",
+        title: 'Next Steps',
+        textBody: `• Contact your carpool buddy
+        • Confirm your pickup time and location
+        • Arrange payment between the two of you
+        • Arrange a ride (Uber, Lyft, etc.)
+        
+        Your safety is NOT our responsibility. You are responsible for determining whether or not your carpool buddy is compatible with you.`,
       });
   }, []);
   const navigation = useNavigation();
@@ -46,13 +51,13 @@ const App = () => {
     <TouchableOpacity style={styles.textButton}>
       <Text style={styles.textButtonLabel}>Text {carpooler.phoneNumber}</Text>
     </TouchableOpacity>
-    <TouchableOpacity  
+    <TouchableOpacity 
     onPress={()=>{
       onCancel();navigation.goBack();
     }}
     
     style={[styles.textButton,{backgroundColor:"red",marginTop:22,width:"80%"}]}>
-      <Text style={styles.textButtonLabel}>Cancel Reservation</Text>
+      <Text style={[styles.textButtonLabel,{fontSize:22}]}>Cancel Reservation</Text>
     </TouchableOpacity>
    
     </AlertNotificationRoot>

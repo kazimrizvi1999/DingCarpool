@@ -64,8 +64,8 @@ export const moveTofinRes = () => {
     setTimeout(()=>{
       Toast.show({
         type: ALERT_TYPE.SUCCESS,
-        title: 'New Rservation!',
-        textBody: 'Check your home page for compatible riders for your upcoming trips',
+        title: 'New Reservation!',
+        textBody: 'A match has accepted you reservation. Visit the homepage to view it.',
       })
     },800)
   }
@@ -79,8 +79,8 @@ export const onCancel = () => {
     setTimeout(()=>{
       Toast.show({
         type: ALERT_TYPE.SUCCESS,
-        title: 'New Rservation!',
-        textBody: 'Check your home page for compatible riders for your upcoming trips',
+        title: 'No Reservation!',
+        textBody: 'Your reservation has been cancelled. You can Book a new one.',
       })
     },800)
   }
