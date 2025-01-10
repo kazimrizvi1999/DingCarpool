@@ -57,7 +57,10 @@ export default function IndexPage() {
           </Text>
 
           <Link
-          href="/tabs/page"
+          href={{
+            pathname: '/tabs/page',
+            params: { a:"21" },
+          }}
             style={styles.continueButton}
           >
             <Text style={styles.continueButtonText}>Upload</Text>

@@ -16,6 +16,7 @@ import { moveToReservations } from "../tabs/page";
 function PostScreen() {
   const navigation = useNavigation();
   return (
+    
       <ScrollView
         style={{ flex: 1, }}
       >

@@ -1,5 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { Link } from "expo-router";
+import { ALERT_TYPE, Dialog, AlertNotificationRoot, Toast } from 'react-native-alert-notification';
+
 import React from "react";
 import {
   View,
@@ -15,6 +17,8 @@ import { addCarpooler } from "../tabs/posts";
 function PostScreen() {
   const navigation = useNavigation();
   return (
+    <AlertNotificationRoot>
+
       <ScrollView
         style={{ flex: 1, }}
       >
@@ -105,12 +109,21 @@ function PostScreen() {
           
           <TouchableOpacity
             style={styles.continueButton}
-            onPress={() => {addCarpooler();navigation.goBack();}}
+            onPress={() => {addCarpooler();
+        Dialog.show({
+          type: ALERT_TYPE.SUCCESS,
+          title: 'Success',
+          textBody: 'Congrats! this is dialog box success',
+          button: 'close',
+        })
+              }}
           >
             <Text style={styles.continueButtonText}>Create Post</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
+    </AlertNotificationRoot>
+
   );
 }
 

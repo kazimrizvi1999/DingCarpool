@@ -6,11 +6,14 @@ import Icon from 'react-native-vector-icons/Feather';
 import PostScreen from './posts';
 import HomePage from './page';
 import SettingsScreen from './Settings';
+import { AlertNotificationRoot } from 'react-native-alert-notification';
 
 const Tab = createBottomTabNavigator();
 
 export default function TabLayout() {
   return (
+        <AlertNotificationRoot>
+    
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
@@ -45,6 +48,8 @@ export default function TabLayout() {
       <Tab.Screen name="My Posts" component={PostScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
+    </AlertNotificationRoot>
+
   );
 }
 

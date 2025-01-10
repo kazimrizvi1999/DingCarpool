@@ -1,7 +1,9 @@
 import { Link, router, useNavigation } from 'expo-router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { ALERT_TYPE, Dialog, AlertNotificationRoot, Toast } from 'react-native-alert-notification';
 import Icon from "react-native-vector-icons/Ionicons";
 import { View, Text,ScrollView, FlatList, Image, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
+import { useSearchParams } from 'expo-router/build/hooks';
 let carpoolers=[
   {
     id: '1',
@@ -43,15 +45,30 @@ export const moveToReservations = () => {
     const selectedCarpooler = carpoolers[carpoolers.length-1];
     carpoolers.pop()
     res.push(selectedCarpooler)
+    setTimeout(()=>{
+      Toast.show({
+        type: ALERT_TYPE.SUCCESS,
+        title: 'New Matches!',
+        textBody: 'Check your home page for compatible riders for your upcoming trips',
+      })
+    },800)
   }
-  // if (selectedCarpooler) {
-  //   // @ts-ignore
-  //   setRes([...res, selectedCarpooler]);
-  //   setCarpoolers(a);
-  // }
+  
 };
 const App = () => {
+const params=useSearchParams()
+const toastMessage = params.get('a');
+useEffect(() => {
+  if (toastMessage=="21") {
+  router.setParams({"a":89})
 
+    Dialog.show({
+      type: ALERT_TYPE.SUCCESS,
+      title: 'Welcome To Ding!',
+      textBody: "Create Posts so that you can match with other carpoolers",
+    });
+  }
+}, [toastMessage]);
   const renderCarpooler = ({ item }:any) => (
     <View style={styles.carpoolerCard}>
       <Image source={item.image} style={[styles.avatar,{backgroundColor:item.backgroundColor}]} />
@@ -84,6 +101,7 @@ const App = () => {
   );
  
   return (
+        <AlertNotificationRoot>
 
     <View style={styles.container}>
       <View style={styles.header2}>
@@ -130,6 +148,8 @@ const App = () => {
             {/* </TouchableOpacity> */}
                 </Link>
     </View>
+    </AlertNotificationRoot>
+
   );
 };
 
