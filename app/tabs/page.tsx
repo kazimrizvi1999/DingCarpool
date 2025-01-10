@@ -39,9 +39,11 @@ let carpoolers=[
 ]
 let res=[]
 export const moveToReservations = () => {
-  const selectedCarpooler = carpoolers[carpoolers.length-1];
-  carpoolers.pop()
-  res.push(selectedCarpooler)
+  if(carpoolers.length!=0){
+    const selectedCarpooler = carpoolers[carpoolers.length-1];
+    carpoolers.pop()
+    res.push(selectedCarpooler)
+  }
   // if (selectedCarpooler) {
   //   // @ts-ignore
   //   setRes([...res, selectedCarpooler]);
@@ -101,18 +103,20 @@ const App = () => {
           data={res}
           renderItem={renderRes}
           // @ts-ignore
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item?.id||"8"}
           showsVerticalScrollIndicator={false}
         />:
         <Text style={styles.subtitle}>You do not have any reservations</Text>
         }
         <Text style={styles.sectionTitle}>Nearby Carpoolers</Text>
-        <FlatList
+        {carpoolers.length==0?
+        <Text style={styles.subtitle}>You do not have any Crapoolers</Text>
+        :<FlatList
           data={carpoolers}
           renderItem={renderCarpooler}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item?.id||"8"}
           showsVerticalScrollIndicator={false}
-        />
+        />}
       </View>
        <Link
             style={styles.floatingButton}
